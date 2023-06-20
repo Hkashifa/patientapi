@@ -46,7 +46,7 @@ public class PatientController {
         return ResponseEntity.ok().body(postResponse);
     }
 
-    @PostMapping("/patients")
+    @PostMapping("/addpatients")
     public ResponseEntity<PatientDTO> createPatient(@RequestBody PatientDTO patientDto) {
 
         // convert DTO to entity
