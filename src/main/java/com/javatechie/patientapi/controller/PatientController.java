@@ -31,49 +31,29 @@ public class PatientController {
 
     @GetMapping("/patients")
     public List<PatientDTO> getAllPatients() {
-
-        return service.getAllPatient().stream().map(post -> modelMapper.map(post, PatientDTO.class))
-                .collect(Collectors.toList());
+        //this is suppose to work hopefully
+        return service.getAllPatient();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<PatientDTO> getPatientById(@PathVariable(name = "id") Long id) {
-        Patient patient = service.getPatientById(id);
 
-        // convert entity to DTO
-        PatientDTO postResponse = modelMapper.map(patient, PatientDTO.class);
-
-        return ResponseEntity.ok().body(postResponse);
+        return null;
     }
 
     @PostMapping("/addpatients")
     public ResponseEntity<PatientDTO> createPatient(@RequestBody PatientDTO patientDto) {
 
-        // convert DTO to entity
-        Patient patientRequest = modelMapper.map(patientDto, Patient.class);
+        PatientDTO newpatient = service.createPatient(patientDto);
+        return new ResponseEntity<PatientDTO> (newpatient, HttpStatus.CREATED);
 
-        Patient patient = service.createPatient(patientRequest);
-
-        // convert entity to DTO
-        PatientDTO postResponse = modelMapper.map(patient, PatientDTO.class);
-
-        return new ResponseEntity<PatientDTO>(postResponse, HttpStatus.CREATED);
     }
 
-    // change the request for DTO
-    // change the response for DTO
+
     @PutMapping("/{id}")
     public ResponseEntity<PatientDTO> updatePatient(@PathVariable long id, @RequestBody PatientDTO patientDto) {
 
-        // convert DTO to Entity
-        Patient patientRequest = modelMapper.map(patientDto, Patient.class);
-
-        Patient patient = service.updatePatient(id,  patientRequest);
-
-        // entity to DTO
-        PatientDTO  postResponse = modelMapper.map(patient,  PatientDTO .class);
-
-        return ResponseEntity.ok().body(postResponse);
+        return ResponseEntity.ok().body(patientDto);
     }
 
     @DeleteMapping("/{id}")

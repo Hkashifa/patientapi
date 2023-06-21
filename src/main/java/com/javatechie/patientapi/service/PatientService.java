@@ -1,9 +1,8 @@
 package com.javatechie.patientapi.service;
 
 
+import com.javatechie.patientapi.dto.PatientDTO;
 import com.javatechie.patientapi.entity.Patient;
-import com.javatechie.patientapi.repository.PatientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,15 +11,17 @@ import java.util.List;
 public interface PatientService {
 
 
-    List<Patient> getAllPatient();
+    List<PatientDTO> getAllPatient();
 
-    Patient createPatient(Patient patient);
+    public PatientDTO createPatient(PatientDTO patientDto);
 
-    Patient updatePatient(long id, Patient patient);
+    public PatientDTO updatePatient(long id, PatientDTO patientRequestDTO);
 
-    void deletePatient(long id);
 
-    Patient getPatientById(long id);
+
+    PatientDTO deletePatient(long id);
+
+    PatientDTO getPatientById(long id);
 
 
 }
