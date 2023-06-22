@@ -28,17 +28,18 @@ public class PatientController {
 
     }
 
-
+    //this works
     @GetMapping("/patients")
     public List<PatientDTO> getAllPatients() {
 
         return service.getAllPatient();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("patient/{id}")
     public ResponseEntity<PatientDTO> getPatientById(@PathVariable(name = "id") Long id) {
-
-        return null;
+           //this works i tested it
+        PatientDTO patientResponse = service.getPatientById(id);
+        return ResponseEntity.ok().body(patientResponse);
     }
 
     @PostMapping("/patients/new")
@@ -50,15 +51,15 @@ public class PatientController {
     }
 
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PatientDTO> updatePatient(@PathVariable Integer id, @RequestBody PatientDTO patientDto) {
+    @PutMapping("patientupadate/{id}")
+    public ResponseEntity<PatientDTO> updatePatient(@PathVariable Integer id,@RequestBody PatientDTO patientDto) {
 
         PatientDTO newPatient = service.updatePatient(id,patientDto);
 
         return ResponseEntity.ok().body(newPatient);
     }
 
-    @DeleteMapping("patientdelete/{id}")
+    @PutMapping("patientdelete/{id}")
     public ResponseEntity<PatientDTO> deletePatient(@PathVariable long id, @RequestBody PatientDTO patientDto) {
 
 

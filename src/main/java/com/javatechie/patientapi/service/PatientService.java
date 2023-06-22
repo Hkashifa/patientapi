@@ -16,7 +16,7 @@ public interface PatientService {
 
     public PatientDTO createPatient(PatientDTO patientDto);
 
-    public PatientDTO updatePatient(Integer id, PatientDTO patientRequestDTO);
+    public PatientDTO updatePatient(Integer id,PatientDTO patientdto);
 
 
 
