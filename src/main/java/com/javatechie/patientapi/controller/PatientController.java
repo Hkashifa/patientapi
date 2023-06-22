@@ -31,7 +31,7 @@ public class PatientController {
 
     @GetMapping("/patients")
     public List<PatientDTO> getAllPatients() {
-        //this is suppose to work hopefully
+
         return service.getAllPatient();
     }
 
@@ -41,26 +41,30 @@ public class PatientController {
         return null;
     }
 
-    @PostMapping("/addpatients")
+    @PostMapping("/patients/new")
     public ResponseEntity<PatientDTO> createPatient(@RequestBody PatientDTO patientDto) {
 
-        PatientDTO newpatient = service.createPatient(patientDto);
-        return new ResponseEntity<PatientDTO> (newpatient, HttpStatus.CREATED);
+        PatientDTO newPatient = service.createPatient(patientDto);
+        return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
 
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<PatientDTO> updatePatient(@PathVariable long id, @RequestBody PatientDTO patientDto) {
+    public ResponseEntity<PatientDTO> updatePatient(@PathVariable Integer id, @RequestBody PatientDTO patientDto) {
 
-        return ResponseEntity.ok().body(patientDto);
+        PatientDTO newPatient = service.updatePatient(id,patientDto);
+
+        return ResponseEntity.ok().body(newPatient);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse> deletePatient(@PathVariable(name = "id") Long id) {
-        service.deletePatient(id);
-        ApiResponse apiResponse = new ApiResponse(Boolean.TRUE, "Post deleted successfully", HttpStatus.OK);
-        return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
+    @DeleteMapping("patientdelete/{id}")
+    public ResponseEntity<PatientDTO> deletePatient(@PathVariable long id, @RequestBody PatientDTO patientDto) {
+
+
+        PatientDTO newpatient = service.deletePatient(id,patientDto);
+
+        return ResponseEntity.ok().body(newpatient);
     }
 
 
