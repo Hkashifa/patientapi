@@ -6,7 +6,7 @@ public class ApiResponse {
     Boolean success;
     String message;
     HttpStatus status;
-
     public ApiResponse(Boolean aTrue, String postDeletedSuccessfully, HttpStatus httpStatus) {
     }
 }
+

@@ -3,16 +3,26 @@ package com.javatechie.patientapi.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
 @Table(name = "doctor")
-@EqualsAndHashCode(callSuper = false)
-public class Doctor extends Base{
+//@EqualsAndHashCode(callSuper = false)
+public class Doctor extends BaseEntity {
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "lastName")
+    private String lastName;
+
+    @Column(name = "email")
+    private String Email;
+
+    @Column(name = "phoneNumber")
+    private String phoneNumber;
 
     @Column(name = "department")
     private String Department;
@@ -20,8 +30,7 @@ public class Doctor extends Base{
     @Column(name = "specialisation")
     private String Specialisation;
 
-    @Column(name = "room")
-    private int Room;
-
+    @Column(name = "degree")
+    private String degree;
 
 }

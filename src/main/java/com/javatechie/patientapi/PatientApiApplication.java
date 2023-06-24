@@ -9,15 +9,14 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 //@EnableWebSecurity
-public class PatientapiApplication {
+public class PatientApiApplication {
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(PatientapiApplication.class, args);
+        SpringApplication.run(PatientApiApplication.class, args);
     }
-
 
 }

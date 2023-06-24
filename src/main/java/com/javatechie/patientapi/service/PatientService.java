@@ -1,7 +1,7 @@
 package com.javatechie.patientapi.service;
 
 
-import com.javatechie.patientapi.dto.PatientDTO;
+import com.javatechie.patientapi.dto.PatientDto;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,18 +11,14 @@ import java.util.List;
 @Service
 public interface PatientService {
 
+    List<PatientDto> getAllPatient();
 
-    List<PatientDTO> getAllPatient();
+    public PatientDto createPatient(PatientDto patientDto);
 
-    public PatientDTO createPatient(PatientDTO patientDto);
+    public PatientDto updatePatient(Integer id, PatientDto patientdto);
 
-    public PatientDTO updatePatient(Integer id,PatientDTO patientdto);
+    public PatientDto deletePatient(@PathVariable long id, @RequestBody PatientDto patientDto);
 
-
-
-    public PatientDTO deletePatient(@PathVariable long id, @RequestBody PatientDTO patientDto);
-
-    PatientDTO getPatientById(long id);
-
+    PatientDto getPatientById(long id);
 
 }
